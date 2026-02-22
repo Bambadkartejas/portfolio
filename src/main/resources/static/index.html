@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Tejas | Java Developer</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+	<style>
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			margin: 0;
+			padding-top: 70px;
+			font-family: "Segoe UI", sans-serif;
+		}
+
+		/* NAVBAR */
+		.navbar {
+			background-color: #0d1b2a;
+		}
+
+		.nav-link {
+			margin-left: 15px;
+			font-weight: 500;
+		}
+
+		.nav-link:hover {
+			color: #4cc9f0 !important;
+		}
+
+		/* SECTIONS */
+		section {
+			padding: 80px 0;
+		}
+
+		/* ABOUT HERO */
+		#about {
+			min-height: 100vh;
+			background: linear-gradient(135deg, #0d1b2a, #1b263b);
+			color: white;
+			display: flex;
+			align-items: center;
+		}
+
+		.hero-title {
+			font-size: 3rem;
+			font-weight: 700;
+		}
+
+		.highlight {
+			color: #4cc9f0;
+		}
+
+		.hero-subtitle {
+			font-size: 1.3rem;
+			color: #cbd5e1;
+			margin: 20px 0;
+		}
+
+		.hero-text {
+			font-size: 1.05rem;
+			line-height: 1.8;
+			color: #e5e7eb;
+		}
+
+		.hero-buttons .btn-primary {
+			background-color: #4cc9f0;
+			border: none;
+			color: #000;
+			font-weight: 600;
+		}
+
+		.skills-section {
+			padding: 80px 10%;
+			background: #f8f9fa;
+		}
+
+		.section-title {
+			text-align: center;
+			font-size: 32px;
+			margin-bottom: 30px;
+		}
+
+		.skill-tabs {
+			text-align: center;
+			margin-bottom: 30px;
+		}
+
+		.tab-btn {
+			padding: 10px 18px;
+			margin: 6px;
+			border: none;
+			border-radius: 20px;
+			background: #e0e0e0;
+			cursor: pointer;
+			font-weight: 600;
+		}
+
+		.tab-btn.active {
+			background: #0d6efd;
+			color: white;
+		}
+
+		.skills-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			gap: 18px;
+		}
+
+		.skill-box {
+			background: white;
+			padding: 16px;
+			border-radius: 12px;
+			box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+		}
+
+		.skill-box span {
+			font-weight: 600;
+			display: block;
+			margin-bottom: 8px;
+		}
+
+		.bar {
+			background: #e9ecef;
+			height: 6px;
+			/* 👈 thin line */
+			border-radius: 6px;
+			overflow: hidden;
+			margin-bottom: 4px;
+		}
+
+		.bar-fill {
+			height: 100%;
+			background: linear-gradient(90deg, #0d6efd, #6610f2);
+			border-radius: 6px;
+		}
+
+		.proficiency-text {
+			font-size: 12px;
+			color: #6c757d;
+		}
+
+
+
+		.experience-section {
+			padding: 80px 10%;
+			background: #ffffff;
+		}
+
+		.timeline {
+			position: relative;
+			margin-top: 40px;
+		}
+
+		.timeline::before {
+			content: '';
+			position: absolute;
+			left: 18px;
+			top: 0;
+			width: 3px;
+			height: 100%;
+			background: #dee2e6;
+		}
+
+		.timeline-item {
+			position: relative;
+			padding-left: 60px;
+			margin-bottom: 40px;
+		}
+
+		.timeline-dot {
+			position: absolute;
+			left: 10px;
+			top: 6px;
+			width: 18px;
+			height: 18px;
+			background: #0d6efd;
+			border-radius: 50%;
+		}
+
+		.timeline-content {
+			background: #f8f9fa;
+			padding: 20px;
+			border-radius: 12px;
+			box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+		}
+
+		.timeline-content h3 {
+			margin: 0;
+			color: #0d6efd;
+		}
+
+		.timeline-content h4 {
+			margin: 4px 0 8px;
+			font-weight: 500;
+		}
+
+		.timeline-date {
+			font-size: 13px;
+			color: #6c757d;
+			display: inline-block;
+			margin-bottom: 10px;
+		}
+
+		.timeline-content ul {
+			padding-left: 18px;
+		}
+
+		.timeline-content li {
+			margin-bottom: 8px;
+			font-size: 14px;
+			line-height: 1.6;
+		}
+
+
+
+
+
+		.achievements-section {
+			padding: 80px 10%;
+			background: #f8f9fa;
+		}
+
+		.achievements-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+			gap: 20px;
+			margin-top: 30px;
+		}
+
+		.achievement-card {
+			background: #ffffff;
+			padding: 22px;
+			border-radius: 14px;
+			box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+			transition: transform 0.3s, box-shadow 0.3s;
+		}
+
+		.achievement-card:hover {
+			transform: translateY(-6px);
+			box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+		}
+
+		.achievement-card h4 {
+			color: #0d6efd;
+			margin-bottom: 10px;
+		}
+
+		.achievement-card p {
+			font-size: 14px;
+			color: #495057;
+			line-height: 1.6;
+		}
+
+		.achievements-section {
+			padding: 80px 10%;
+			background: #f8f9fa;
+		}
+
+		.achievements-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+			gap: 20px;
+			margin-top: 30px;
+		}
+
+		.achievement-card {
+			background: #ffffff;
+			padding: 22px;
+			border-radius: 14px;
+			box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+			transition: transform 0.3s, box-shadow 0.3s;
+		}
+
+		.achievement-card:hover {
+			transform: translateY(-6px);
+			box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+		}
+
+		.achievement-card h4 {
+			color: #0d6efd;
+			margin-bottom: 10px;
+		}
+
+		.achievement-card p {
+			font-size: 14px;
+			color: #495057;
+			line-height: 1.6;
+		}
+		
+		
+		
+		
+		.footer {
+		  background: #0d6efd;
+		  color: #ffffff;
+		  text-align: center;
+		  padding: 16px 8%;
+		  font-size: 20px;
+		}
+		
+		
+		
+		
+		.projects-section {
+		  padding: 80px 10%;
+		  background: #ffffff;
+		}
+
+		.projects-grid {
+		  display: grid;
+		  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		  gap: 20px;
+		  margin-top: 30px;
+		}
+
+		.project-card {
+		  background: #f8f9fa;
+		  padding: 24px;
+		  border-radius: 14px;
+		  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+		  transition: transform 0.3s, box-shadow 0.3s;
+		}
+
+		.project-card:hover {
+		  transform: translateY(-6px);
+		  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+		}
+
+		.project-card h4 {
+		  color: #0d6efd;
+		  margin-bottom: 10px;
+		}
+
+		.project-card p {
+		  font-size: 14px;
+		  color: #495057;
+		  line-height: 1.6;
+		  margin-bottom: 14px;
+		}
+
+		.project-link {
+		  font-size: 14px;
+		  font-weight: 600;
+		  color: #0d6efd;
+		  text-decoration: none;
+		}
+
+		.project-link:hover {
+		  text-decoration: underline;
+		}
+
+
+	</style>
+</head>
+
+<body>
+
+	<!-- NAVBAR -->
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="#">Tejas | Java Developer</a>
+
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="nav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+					<li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+					<li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- ABOUT SECTION -->
+	<section id="about">
+		<div class="container">
+			<div class="row align-items-center">
+
+				<div class="col-lg-7">
+					<span class="badge bg-info text-dark mb-3">Java Developer</span>
+
+					<h1 class="hero-title">
+						Hi, I'm <span class="highlight">Tejas Bambadkar</span>
+					</h1>
+
+					<h4 class="hero-subtitle">
+						Building scalable backend systems with Java & Spring Boot
+					</h4>
+
+					<p class="hero-text">
+						Java Developer with <strong>4+ years of experience</strong> in designing,
+						developing, and supporting enterprise-grade applications using
+						Java, Spring Boot, Microservices, and REST APIs.
+					</p>
+
+					<div class="hero-buttons mt-4">
+						<a href="#skills" class="btn btn-primary me-3">View Skills</a>
+						<a href="#experience" class="btn btn-outline-light">My Experience</a>
+					</div>
+				</div>
+
+				<div class="col-lg-5 mt-5 mt-lg-0">
+					<div class="tech-card">
+						<h5 class="text-info">Core Expertise</h5>
+						<ul>
+							<li>Java 8+ / 17</li>
+							<li>Spring Boot & Microservices</li>
+							<li>REST APIs & JWT</li>
+							<li>SQL / Oracle</li>
+							<li>Production Support & Monitoring</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<section id="skills" class="skills-section">
+		<h2 class="section-title">Technical Skills</h2>
+
+		<!-- Tabs -->
+		<div class="skill-tabs">
+			<button class="tab-btn active" onclick="filterSkills('all', this)">All</button>
+			<button class="tab-btn" onclick="filterSkills('backend', this)">Backend</button>
+			<button class="tab-btn" onclick="filterSkills('frontend', this)">Frontend</button>
+			<button class="tab-btn" onclick="filterSkills('security', this)">Security</button>
+			<button class="tab-btn" onclick="filterSkills('database', this)">Database</button>
+			<button class="tab-btn" onclick="filterSkills('devops', this)">DevOps</button>
+			<button class="tab-btn" onclick="filterSkills('monitoring', this)">Monitoring</button>
+			<button class="tab-btn" onclick="filterSkills('testing', this)">API & Testing</button>
+			<button class="tab-btn" onclick="filterSkills('architecture', this)">Architecture</button>
+			<button class="tab-btn" onclick="filterSkills('ai', this)">AI</button>
+		</div>
+
+		<!-- Skills Grid -->
+		<div class="skills-grid">
+
+			<!-- Backend -->
+
+			<div class="skill-box backend"><span><small>Java</small></span>
+				<div class="bar">
+					<div class="bar-fill" style="width:96%"></div>
+				</div> <small class="proficiency-text">96% Proficiency</small>
+			</div>
+			<div class="skill-box backend">
+				<span>Spring Boot</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:94%"></div>
+				</div>
+				<small class="proficiency-text">94% Proficiency</small>
+			</div>
+
+			<div class="skill-box backend">
+				<span>Spring MVC</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:90%"></div>
+				</div>
+				<small class="proficiency-text">90% Proficiency</small>
+			</div>
+
+			<div class="skill-box backend">
+				<span>Microservices</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:88%"></div>
+				</div>
+				<small class="proficiency-text">88% Proficiency</small>
+			</div>
+
+			<div class="skill-box backend">
+				<span>REST APIs</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:95%"></div>
+				</div>
+				<small class="proficiency-text">95% Proficiency</small>
+			</div>
+
+			<div class="skill-box backend">
+				<span>SOAP</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:82%"></div>
+				</div>
+				<small class="proficiency-text">82% Proficiency</small>
+			</div>
+
+			<div class="skill-box backend">
+				<span>JPA / Hibernate</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:92%"></div>
+				</div>
+				<small class="proficiency-text">92% Proficiency</small>
+			</div>
+
+			<!-- Frontend -->
+			<div class="skill-box frontend">
+				<span>HTML</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:85%"></div>
+				</div>
+				<small class="proficiency-text">85% Proficiency</small>
+			</div>
+
+			<div class="skill-box frontend">
+				<span>CSS</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:80%"></div>
+				</div>
+				<small class="proficiency-text">80% Proficiency</small>
+			</div>
+
+			<div class="skill-box frontend">
+				<span>JavaScript</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:70%"></div>
+				</div>
+				<small class="proficiency-text">68% Proficiency</small>
+			</div>
+
+			<!-- Security -->
+			<div class="skill-box security">
+				<span>Spring Security</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:88%"></div>
+				</div>
+				<small class="proficiency-text">88% Proficiency</small>
+			</div>
+
+			<div class="skill-box security">
+				<span>JWT Authentication</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:90%"></div>
+				</div>
+				<small class="proficiency-text">90% Proficiency</small>
+			</div>
+
+			<div class="skill-box security">
+				<span>RBAC</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:86%"></div>
+				</div>
+				<small class="proficiency-text">86% Proficiency</small>
+			</div>
+
+			<!-- Database -->
+			<div class="skill-box database">
+				<span>Oracle SQL</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:92%"></div>
+				</div>
+				<small class="proficiency-text">92% Proficiency</small>
+			</div>
+
+			<div class="skill-box database">
+				<span>DB</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:88%"></div>
+				</div>
+				<small class="proficiency-text">88% Proficiency</small>
+			</div>
+
+			<div class="skill-box database">
+				<span>Transaction Management</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:90%"></div>
+				</div>
+				<small class="proficiency-text">90% Proficiency</small>
+			</div>
+
+			<!-- DevOps -->
+			<div class="skill-box devops">
+				<span>Jenkins</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:85%"></div>
+				</div>
+				<small class="proficiency-text">80% Proficiency</small>
+			</div>
+
+			<div class="skill-box devops">
+				<span>Git</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:90%"></div>
+				</div>
+				<small class="proficiency-text">90% Proficiency</small>
+			</div>
+
+			<div class="skill-box devops">
+				<span>CI/CD</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:82%"></div>
+				</div>
+				<small class="proficiency-text">74% Proficiency</small>
+			</div>
+
+			<div class="skill-box devops">
+				<span>Shell Scripting</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:78%"></div>
+				</div>
+				<small class="proficiency-text">78% Proficiency</small>
+			</div>
+
+			<!-- Monitoring -->
+			<div class="skill-box monitoring">
+				<span>AppDynamics</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:86%"></div>
+				</div>
+				<small class="proficiency-text">90% Proficiency</small>
+			</div>
+
+			<div class="skill-box monitoring">
+				<span>SolarWinds</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:80%"></div>
+				</div>
+				<small class="proficiency-text">90% Proficiency</small>
+			</div>
+
+			<!-- Testing -->
+			<div class="skill-box testing">
+				<span>Postman</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:92%"></div>
+				</div>
+				<small class="proficiency-text">92% Proficiency</small>
+			</div>
+
+			<div class="skill-box testing">
+				<span>Swagger (OpenAPI)</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:90%"></div>
+				</div>
+				<small class="proficiency-text">90% Proficiency</small>
+			</div>
+
+			<!-- Architecture -->
+			<div class="skill-box architecture">
+				<span>Microservices Design</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:88%"></div>
+				</div>
+				<small class="proficiency-text">82% Proficiency</small>
+			</div>
+
+			<div class="skill-box architecture">
+				<span>Agile / Scrum</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:85%"></div>
+				</div>
+				<small class="proficiency-text">85% Proficiency</small>
+			</div>
+
+			<!-- AI -->
+			<div class="skill-box ai">
+				<span>Prompt Engineering</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:80%"></div>
+				</div>
+				<small class="proficiency-text">52% Proficiency</small>
+			</div>
+
+			<div class="skill-box ai">
+				<span>RAG</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:75%"></div>
+				</div>
+				<small class="proficiency-text">56% Proficiency</small>
+			</div>
+
+			<div class="skill-box ai">
+				<span>Spring AI</span>
+				<div class="bar">
+					<div class="bar-fill" style="width:72%"></div>
+				</div>
+				<small class="proficiency-text">69% Proficiency</small>
+			</div>
+
+		</div>
+	</section>
+
+
+
+
+	<section id="experience" class="experience-section">
+		<h2 class="section-title">Work Experience</h2>
+
+		<div class="timeline">
+
+			<!-- Experience 1 -->
+			<div class="timeline-item">
+				<div class="timeline-dot"></div>
+				<div class="timeline-content">
+					<h3>Java Developer</h3>
+					<h4>Tata Consultancy Services (TCS)</h4>
+					<span class="timeline-date">Nov 2022 – Present</span>
+
+					<ul>
+						<li>Developed and enhanced REST and SOAP-based microservices using Java and Spring Boot for a
+							large-scale insurance communication platform.</li>
+						<li>Migrated backend services from monolithic architecture to microservices, improving
+							scalability, fault isolation, and deployment flexibility.</li>
+						<li>Led application and framework upgrades to resolve security vulnerabilities and improve
+							system stability.</li>
+						<li>Automated CI/CD pipelines using Jenkins and Git, reducing deployment time by approximately
+							50%.</li>
+						<li>Designed backend integrations enabling seamless communication between internal systems and
+							Java applications.</li>
+						<li>Improved service reliability through proactive monitoring, logging, and production
+							optimization.</li>
+						<li>Conducted performance testing and tuning to enhance system stability.</li>
+						<li>Estimated project timelines and resource efforts, improving planning accuracy.</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Experience 2 -->
+			<div class="timeline-item">
+				<div class="timeline-dot"></div>
+				<div class="timeline-content">
+					<h3>Java Application Support Engineer</h3>
+					<h4>Tata Consultancy Services (TCS)</h4>
+					<span class="timeline-date">Oct 2021 – Nov 2022</span>
+
+					<ul>
+						<li>Supported production and non-production environments ensuring high availability of
+							enterprise Java applications.</li>
+						<li>Monitored batch jobs, application health, and system alerts, performing timely incident
+							resolution.</li>
+						<li>Executed Disaster Recovery (DR) activities and validated system readiness during DR drills.
+						</li>
+						<li>Automated infrastructure and application health checks using shell scripts, improving
+							monitoring efficiency.</li>
+						<li>Collaborated with infrastructure and application teams to resolve incidents and stabilize
+							environments.</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- AI Experience -->
+			<div class="timeline-item">
+				<div class="timeline-dot"></div>
+				<div class="timeline-content">
+					<h3>AI & Generative AI Exposure</h3>
+					<h4>Hands-on Learning & Implementation</h4>
+
+					<ul>
+						<li>Strong understanding of Large Language Model (LLM) fundamentals and prompt engineering
+							techniques.</li>
+						<li>Implemented Retrieval-Augmented Generation (RAG) concepts for contextual AI responses.</li>
+						<li>Explored Spring AI for integrating Generative AI capabilities into Java-based applications.
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</section>
+	
+	
+	<section id="projects" class="projects-section">
+	  <h2 class="section-title">Projects</h2>
+
+	  <div class="projects-grid">
+
+	    <!-- Project 1 -->
+	    <div class="project-card">
+	      <h4>SPOC Management Portal</h4>
+	      <p>
+	        Developed to centralize Single Point of Contact (SPOC) information and
+	        streamline stakeholder communication through a secure, backend-driven portal.
+	      </p>
+	      <a href="https://spocportal.onrender.com/login" target="_blank" class="project-link">Live Link</a>
+	    </div>
+
+	    <!-- Project 2 -->
+	    <div class="project-card">
+	      <h4>NGO Website Development (WordPress)</h4>
+	      <p>
+	        Enhanced an NGO website with an easy-to-manage online presence for sharing
+	        activities, collecting donations, and handling volunteer inquiries.
+	      </p>
+	      <a href="https://upayngo.org/" target="_blank" class="project-link">Live Link</a>
+	    </div>
+
+	  </div>
+	</section>
+
+	<section id="achievements" class="achievements-section">
+		<h2 class="section-title">Achievements & Awards</h2>
+
+		<div class="achievements-grid">
+
+			<div class="achievement-card">
+				<h4>Innovation Spark Award</h4>
+				<p>Recognized for innovative problem-solving and introducing impactful technical solutions.</p>
+			</div>
+
+			<div class="achievement-card">
+				<h4>Technical Excellence Award</h4>
+				<p>Awarded for delivering high-quality, scalable, and reliable backend solutions.</p>
+			</div>
+
+			<div class="achievement-card">
+				<h4>Performance Award</h4>
+				<p>Honored for consistent performance and exceeding delivery expectations.</p>
+			</div>
+
+			<div class="achievement-card">
+				<h4>On the Spot Award</h4>
+				<p>Received for quick issue resolution and critical production support.</p>
+			</div>
+
+			<div class="achievement-card">
+				<h4>Star of the Month</h4>
+				<p>Recognized for outstanding contribution and team impact.</p>
+			</div>
+
+			<div class="achievement-card">
+				<h4>Special Initiative Award</h4>
+				<p>Awarded for taking ownership of key initiatives beyond assigned responsibilities.</p>
+			</div>
+
+			<div class="achievement-card">
+				<h4>Younger Intrapreneur Award</h4>
+				<p>Recognized for entrepreneurial mindset and driving innovation within the organization.</p>
+			</div>
+
+		</div>
+	</section>
+
+
+
+
+
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+		function filterSkills(category, btn) {
+			document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+			btn.classList.add('active');
+
+			document.querySelectorAll('.skill-box').forEach(skill => {
+				if (category === 'all' || skill.classList.contains(category)) {
+					skill.style.display = 'block';
+				} else {
+					skill.style.display = 'none';
+				}
+			});
+		}
+	</script>
+
+
+	<footer class="footer">
+	  <p>© 2025 Tejas Bambadkar. All rights reserved.</p>
+	</footer>
+
+
+
+</body>
+
+</html>
